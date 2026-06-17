@@ -18,7 +18,7 @@ export function YouTubePreview({ state, onThemeToggle }: Props) {
   const linkColor = isDark ? 'text-[#3EA6FF]' : 'text-[#065FD4]';
 
   return (
-    <div className={`w-full ${bgColor} p-4 text-left`}>
+    <div className={`w-fit max-w-lg sm:max-w-xl ${bgColor} p-4 text-left`}>
       <div className="flex items-start">
         {/* Avatar */}
         {state.avatarUrl && (

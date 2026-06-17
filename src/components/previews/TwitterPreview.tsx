@@ -18,7 +18,7 @@ export function TwitterPreview({ state, onThemeToggle }: Props) {
   const mutedColor = isDark ? 'text-[#71767B]' : 'text-[#536471]';
 
   return (
-    <div className={`w-full ${bgColor} p-4 text-left ${nameColor} border ${borderColor}`}>
+    <div className={`w-fit max-w-lg sm:max-w-xl ${bgColor} p-4 text-left ${nameColor} border ${borderColor}`}>
       <div className="flex items-start">
         {/* Avatar */}
         {state.avatarUrl && (

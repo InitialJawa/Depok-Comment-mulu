@@ -96,10 +96,10 @@ export function PreviewArea({ state, onStateChange }: Props) {
            backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
          }}></div>
          
-         <div className="relative z-10 w-full max-w-lg flex justify-center drop-shadow-xl" style={getFontFamilyStyle()}>
+         <div className="relative z-10 flex justify-center drop-shadow-xl" style={getFontFamilyStyle()}>
            <div 
               ref={previewRef} 
-              className="flex justify-center rounded-xl overflow-hidden shadow-2xl w-full"
+              className="flex justify-center rounded-xl overflow-hidden shadow-2xl"
               style={{ backgroundColor: 'transparent' }}
            >
               {getPreviewComponent()}

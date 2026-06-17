@@ -15,7 +15,7 @@ export function InstagramPreview({ state, onThemeToggle }: Props) {
   const mutedColor = isDark ? 'text-[#A8A8A8]' : 'text-gray-500';
 
   return (
-    <div className={`w-full ${bgColor} p-4 text-left`}>
+    <div className={`w-fit max-w-lg sm:max-w-xl ${bgColor} p-4 text-left`}>
       <div className="flex items-start">
         {/* Avatar */}
         {state.avatarUrl && (

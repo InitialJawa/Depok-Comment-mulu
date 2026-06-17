@@ -80,6 +80,26 @@ export function CommentForm({ state, onChange, onRandomize }: Props) {
         </div>
       )}
 
+      {state.platform === 'instagram' && (
+        <div className="space-y-3">
+          <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1.5">Template</label>
+          <div className="flex bg-[#0A0A0A] border border-[#2D2D2D] rounded-lg p-1">
+            <button
+              onClick={() => onChange({ instagramTemplate: 'comment' })}
+              className={`flex-1 py-1 text-sm rounded-md transition ${state.instagramTemplate === 'comment' ? 'bg-[#2D2D2D] text-white' : 'text-gray-400 hover:text-white'}`}
+            >
+              Comment
+            </button>
+            <button
+              onClick={() => onChange({ instagramTemplate: 'live' })}
+              className={`flex-1 py-1 text-sm rounded-md transition ${state.instagramTemplate === 'live' ? 'bg-[#2D2D2D] text-white' : 'text-gray-400 hover:text-white'}`}
+            >
+              Live
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="space-y-4 overflow-y-auto pr-2 custom-scrollbar">
         <div>
           <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1.5">Avatar</label>

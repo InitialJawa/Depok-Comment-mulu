@@ -24,7 +24,7 @@ export default function App() {
         onPlatformChange={(platform) => handleStateChange({ platform })}
       />
       
-      <main className="flex-1 flex flex-col p-4 lg:p-6 gap-4 lg:gap-6 w-full max-w-[1440px] mx-auto overflow-y-auto lg:overflow-hidden h-full">
+      <main className="flex-1 flex flex-col p-4 lg:p-6 gap-4 lg:gap-6 w-full max-w-[1440px] mx-auto overflow-y-auto h-full">
         
 
 
@@ -47,23 +47,22 @@ export default function App() {
           <div className="flex-1 flex flex-col min-h-[500px] lg:min-h-0">
              <PreviewArea 
                state={state} 
-               onTransparentChange={(isTransparentBg) => handleStateChange({ isTransparentBg })}
                onStateChange={handleStateChange}
              />
           </div>
         </div>
-
-        {/* Footer info / Disclaimer */}
-        <footer className="mt-auto h-10 border-t border-[#2D2D2D] flex items-center justify-between shrink-0 px-2 lg:px-0 lg:-mx-6 lg:px-6">
-          <p className="text-[10px] text-gray-600 font-medium tracking-wide uppercase hidden sm:block">
-            Hanya untuk keperluan konten kreatif & edukasi. Jangan digunakan untuk menyebarkan misinformasi.
-          </p>
-          <div className="flex items-center gap-4 text-center sm:text-right w-full sm:w-auto justify-center">
-            <span className="text-[10px] text-blue-500 font-bold uppercase tracking-tighter">Built for Indonesia UGC</span>
-            <span className="text-[10px] text-gray-600">v1.0.0 Stable</span>
-          </div>
-        </footer>
       </main>
+
+      {/* Footer info / Disclaimer */}
+      <footer className="h-10 border-t border-[#2D2D2D] flex items-center justify-between shrink-0 px-4 lg:px-6 w-full max-w-[1440px] mx-auto mt-auto">
+        <p className="text-[10px] text-gray-600 font-medium tracking-wide uppercase hidden sm:block">
+          Hanya untuk keperluan konten kreatif & edukasi. Jangan digunakan untuk menyebarkan misinformasi.
+        </p>
+        <div className="flex items-center gap-4 text-center sm:text-right w-full sm:w-auto justify-center">
+          <span className="text-[10px] text-blue-500 font-bold uppercase tracking-tighter">Built for Indonesia UGC</span>
+          <span className="text-[10px] text-gray-600">v1.0.0 Stable</span>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -20,16 +20,7 @@ export function TikTokPreview({ state, onThemeToggle }: Props) {
   const mutedText = isDark ? 'text-neutral-400' : 'text-gray-500';
 
   return (
-    <div className="relative group">
-      {onThemeToggle && (
-        <button 
-          onClick={onThemeToggle}
-          className="absolute -right-12 top-0 p-2 rounded-full bg-[#141414] hover:bg-[#2D2D2D] border border-[#2D2D2D] text-gray-400 hover:text-white transition-colors opacity-0 group-hover:opacity-100"
-          title="Toggle Theme"
-        >
-          {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-        </button>
-      )}
+    <>
       <div className={`relative flex items-start p-4 ${bgColor} ${isReply ? 'rounded-2xl max-w-sm mt-3 ml-3 shadow-2xl' : 'w-full'}`}>
         
         {/* Reply Pointer (if reply bubble) */}
@@ -77,13 +68,15 @@ export function TikTokPreview({ state, onThemeToggle }: Props) {
         </div>
         
         {/* Like Button */}
-        <div className={`flex flex-col items-center ml-2 shrink-0 ${isDark ? 'text-neutral-400' : 'text-gray-500'}`}>
-          <Heart className="w-5 h-5 mb-1 opacity-80" strokeWidth={1.5} />
-          {state.likeCount && (
-            <span className="text-[11px] opacity-80 font-medium">{state.likeCount}</span>
-          )}
-        </div>
+        {!isReply && (
+          <div className={`flex flex-col items-center ml-2 shrink-0 ${isDark ? 'text-neutral-400' : 'text-gray-500'}`}>
+            <Heart className="w-5 h-5 mb-1 opacity-80" strokeWidth={1.5} />
+            {state.likeCount && (
+              <span className="text-[11px] opacity-80 font-medium">{state.likeCount}</span>
+            )}
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 }

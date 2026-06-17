@@ -1,9 +1,11 @@
-export type Platform = 'tiktok' | 'instagram' | 'youtube' | 'twitter';
+export type Platform = 'tiktok' | 'instagram' | 'youtube' | 'twitter' | 'kick_live';
 export type TikTokTemplate = 'video' | 'reply';
+export type InstagramTemplate = 'comment' | 'live';
 
 export interface CommentState {
   platform: Platform;
   tiktokTemplate: TikTokTemplate;
+  instagramTemplate: InstagramTemplate;
   theme: 'light' | 'dark';
   username: string; 
   handle: string; 
@@ -15,12 +17,12 @@ export interface CommentState {
   retweetCount: string;
   replyCount: string;
   timestamp: string;
-  isTransparentBg: boolean;
 }
 
 export const defaultState: CommentState = {
   platform: 'tiktok',
   tiktokTemplate: 'video',
+  instagramTemplate: 'comment',
   theme: 'light',
   username: 'Kreator Keren',
   handle: '@kreator_keren',
@@ -32,5 +34,4 @@ export const defaultState: CommentState = {
   retweetCount: '800',
   replyCount: '24',
   timestamp: '2j lalu',
-  isTransparentBg: false,
 };

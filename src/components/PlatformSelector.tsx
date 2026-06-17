@@ -1,22 +1,6 @@
 import React from 'react';
 import { Platform } from '../types';
-import { Instagram, PlaySquare, Twitter } from 'lucide-react';
-
-// Custom TikTok icon since Lucide doesn't have it natively sometimes
-const TikTokIcon = ({ className }: { className?: string }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-  </svg>
-);
+import { TikTokColoredIcon, InstagramColoredIcon, YouTubeColoredIcon, TwitterColoredIcon, KickColoredIcon } from './icons';
 
 interface Props {
   platform: Platform;
@@ -25,28 +9,32 @@ interface Props {
 
 export function PlatformSelector({ platform, onChange }: Props) {
   const platforms: { id: Platform; label: string; icon: React.ReactNode }[] = [
-    { id: 'tiktok', label: 'TikTok', icon: <TikTokIcon className="w-5 h-5 mr-2" /> },
-    { id: 'instagram', label: 'Instagram', icon: <Instagram className="w-5 h-5 mr-2" /> },
-    { id: 'youtube', label: 'YouTube', icon: <PlaySquare className="w-5 h-5 mr-2" /> },
-    { id: 'twitter', label: 'Twitter', icon: <Twitter className="w-5 h-5 mr-2" /> },
+    { id: 'tiktok', label: 'TikTok', icon: <TikTokColoredIcon className="w-7 h-7 drop-shadow-sm" /> },
+    { id: 'instagram', label: 'Instagram', icon: <InstagramColoredIcon className="w-8 h-8 drop-shadow-sm" /> },
+    { id: 'youtube', label: 'YouTube', icon: <YouTubeColoredIcon className="w-8 h-8 drop-shadow-sm" /> },
+    { id: 'twitter', label: 'Twitter', icon: <TwitterColoredIcon className="w-8 h-8 drop-shadow-sm" /> },
+    { id: 'kick_live', label: 'Kick Live', icon: <KickColoredIcon className="w-7 h-7 drop-shadow-sm" /> },
   ];
 
   return (
-    <div className="flex bg-[#141414] p-1 rounded-xl border border-[#2D2D2D] mb-4 overflow-x-auto custom-scrollbar">
-      {platforms.map((p) => (
-        <button
-          key={p.id}
-          onClick={() => onChange(p.id)}
-          className={`flex items-center justify-center flex-1 py-2 px-4 min-w-[110px] rounded-lg text-sm font-medium transition-colors ${
-            platform === p.id 
-              ? 'bg-[#2D2D2D] text-white' 
-              : 'text-gray-400 hover:text-white'
-          }`}
-        >
-          {p.icon}
-          {p.label}
-        </button>
-      ))}
+    <div className="flex bg-[#141414] p-1.5 rounded-2xl border border-[#2D2D2D] mb-4 overflow-x-auto custom-scrollbar justify-center">
+      <div className="flex items-center gap-2">
+        {platforms.map((p) => (
+          <button
+            key={p.id}
+            title={p.label}
+            onClick={() => onChange(p.id)}
+            className={`flex items-center justify-center w-14 h-14 rounded-xl transition-all duration-200 ${
+              platform === p.id 
+                ? 'bg-[#2D2D2D] shadow-inner scale-105 border border-[#3D3D3D]' 
+                : 'hover:bg-[#1A1A1A] hover:scale-105 opacity-60 hover:opacity-100 border border-transparent'
+            }`}
+          >
+            {p.icon}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
+

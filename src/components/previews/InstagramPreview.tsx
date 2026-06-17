@@ -15,16 +15,7 @@ export function InstagramPreview({ state, onThemeToggle }: Props) {
   const mutedColor = isDark ? 'text-[#A8A8A8]' : 'text-gray-500';
 
   return (
-    <div className={`relative group w-full ${bgColor} p-4 font-sans text-left`}>
-      {onThemeToggle && (
-        <button 
-          onClick={onThemeToggle}
-          className="absolute -right-12 top-0 p-2 rounded-full bg-[#141414] hover:bg-[#2D2D2D] border border-[#2D2D2D] text-gray-400 hover:text-white transition-colors opacity-0 group-hover:opacity-100"
-          title="Toggle Theme"
-        >
-          {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-        </button>
-      )}
+    <div className={`w-full ${bgColor} p-4 font-sans text-left`}>
       <div className="flex items-start">
         {/* Avatar */}
         <img src={state.avatarUrl} alt="Avatar" className={`w-8 h-8 rounded-full object-cover mr-3 bg-gray-200 shrink-0 ${isDark ? '' : 'border border-gray-100'}`} />

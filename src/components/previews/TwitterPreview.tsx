@@ -18,16 +18,7 @@ export function TwitterPreview({ state, onThemeToggle }: Props) {
   const mutedColor = isDark ? 'text-[#71767B]' : 'text-[#536471]';
 
   return (
-    <div className={`relative group w-full ${bgColor} p-4 text-left font-sans ${nameColor} border ${borderColor}`}>
-      {onThemeToggle && (
-        <button 
-          onClick={onThemeToggle}
-          className="absolute -right-12 top-0 p-2 rounded-full bg-[#141414] hover:bg-[#2D2D2D] border border-[#2D2D2D] text-gray-400 hover:text-white transition-colors opacity-0 group-hover:opacity-100"
-          title="Toggle Theme"
-        >
-          {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-        </button>
-      )}
+    <div className={`w-full ${bgColor} p-4 text-left font-sans ${nameColor} border ${borderColor}`}>
       <div className="flex items-start">
         {/* Avatar */}
         <img src={state.avatarUrl} alt="Avatar" className="w-10 h-10 rounded-full object-cover mr-3 bg-neutral-800 shrink-0" />

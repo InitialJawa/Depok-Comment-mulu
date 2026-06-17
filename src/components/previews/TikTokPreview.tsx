@@ -56,7 +56,7 @@ export function TikTokPreview({ state, onThemeToggle }: Props) {
             </div>
           </div>
           
-          <p className={`text-[15px] ${textColor} leading-[1.3] font-medium text-left break-words mt-0.5`}>
+          <p className={`text-[15px] ${textColor} leading-[1.3] font-medium text-left break-words whitespace-pre-wrap mt-0.5`}>
             {renderFormattedText(state.commentText)}
           </p>
           

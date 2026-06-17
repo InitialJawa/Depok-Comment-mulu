@@ -37,7 +37,7 @@ export const defaultState: CommentState = {
   theme: 'light',
   username: 'Kreator Keren',
   handle: '@kreator_keren',
-  avatarUrl: 'https://api.dicebear.com/8.x/notionists/svg?seed=Kreator',
+  avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Anya_Geraldine%2C_Shopee_2019.jpg/330px-Anya_Geraldine%2C_Shopee_2019.jpg',
   isVerified: true,
   commentText: 'Wah, kontennya bermanfaat banget kak! Makasih banyak yaa 🔥',
   likeCount: '3.4K',

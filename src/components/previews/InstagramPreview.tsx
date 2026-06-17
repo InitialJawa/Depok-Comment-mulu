@@ -24,7 +24,7 @@ export function InstagramPreview({ state, onThemeToggle }: Props) {
         
         {/* Content */}
         <div className="flex-1 min-w-0 pr-4">
-          <p className={`text-[14px] leading-tight break-words ${textColor}`}>
+          <p className={`text-[14px] leading-tight break-words whitespace-pre-wrap ${textColor}`}>
             <span className="font-semibold mr-1 inline-flex items-center">
               {state.username.replace(/\s+/g, '').toLowerCase()}
               {state.isVerified && (

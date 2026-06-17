@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { CommentState, AdditionalComment } from '../types';
 import { Image, Shuffle, Highlighter, EyeOff, Scissors, RotateCcw, Plus, Trash2 } from 'lucide-react';
-import { getRandomState, usernames } from '../utils';
+import { getRandomState, usernames, getRandomAvatarUrl } from '../utils';
 
 interface Props {
   state: CommentState;
@@ -50,8 +50,8 @@ export function CommentForm({ state, onChange, onRandomize }: Props) {
   const addAdditionalComment = () => {
     const newComment: AdditionalComment = {
       id: Math.random().toString(36).substring(7),
-      username: 'User Baru',
-      avatarUrl: `https://api.dicebear.com/8.x/notionists/svg?seed=${Math.random()}`,
+      username: usernames[Math.floor(Math.random() * usernames.length)],
+      avatarUrl: getRandomAvatarUrl(),
       isVerified: false,
       commentText: 'Komentar tambahan...'
     };
@@ -166,6 +166,13 @@ export function CommentForm({ state, onChange, onRandomize }: Props) {
                 <Image className="w-4 h-4 mr-2" />
                 Upload
               </label>
+              <button 
+                onClick={() => onChange({ avatarUrl: getRandomAvatarUrl() })}
+                className="ml-2 inline-flex items-center px-3 py-1.5 bg-[#0A0A0A] hover:bg-[#2D2D2D] border border-[#2D2D2D] rounded-lg text-sm text-gray-300 transition"
+                title="Acak Foto Profil"
+              >
+                <Shuffle className="w-4 h-4" />
+              </button>
               <button 
                 onClick={() => onChange({ avatarUrl: '' })}
                 className="ml-2 inline-flex items-center px-3 py-1.5 bg-[#0A0A0A] hover:bg-red-500/20 hover:text-red-400 hover:border-red-500/30 border border-[#2D2D2D] rounded-lg text-sm text-gray-300 transition"
@@ -357,7 +364,7 @@ export function CommentForm({ state, onChange, onRandomize }: Props) {
                      )}
                      <button 
                        onClick={() => updateAdditionalComment(comment.id, { 
-                         avatarUrl: `https://api.dicebear.com/8.x/notionists/svg?seed=${Math.random()}`,
+                         avatarUrl: getRandomAvatarUrl(),
                          username: usernames[Math.floor(Math.random() * usernames.length)]
                        })}
                        className="text-[10px] bg-[#141414] hover:bg-[#2D2D2D] border border-[#2D2D2D] px-2 py-1 rounded text-gray-300 transition"

@@ -32,7 +32,7 @@ export function KickLivePreview({ state, onThemeToggle }: Props) {
               </svg>
             )}
           </span>
-          <span className={`${textColor} break-words`}>
+          <span className={`${textColor} break-words whitespace-pre-wrap`}>
             {renderFormattedText(state.commentText)}
           </span>
         </div>
@@ -52,7 +52,7 @@ export function KickLivePreview({ state, onThemeToggle }: Props) {
                 </svg>
               )}
             </span>
-            <span className={`${textColor} break-words`}>
+            <span className={`${textColor} break-words whitespace-pre-wrap`}>
               {renderFormattedText(comment.commentText)}
             </span>
           </div>

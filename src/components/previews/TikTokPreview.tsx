@@ -38,7 +38,7 @@ export function TikTokPreview({ state, onThemeToggle }: Props) {
           <div className="flex flex-col mb-1">
             {isReply && (
                <span className={`text-[11px] font-bold ${mutedText} mb-0.5 max-w-[200px] truncate`}>
-                 Balas ke @creator
+                 Balas ke Kreator Keren
                </span>
             )}
             <div className="flex items-center mt-0.5">

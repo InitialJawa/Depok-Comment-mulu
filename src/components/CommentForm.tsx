@@ -126,26 +126,21 @@ export function CommentForm({ state, onChange, onRandomize }: Props) {
       <div className="space-y-4 overflow-y-auto pr-2 custom-scrollbar">
         <div>
           <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1.5">Font Style</label>
-          <div className="flex bg-[#0A0A0A] border border-[#2D2D2D] rounded-lg p-1">
-            <button
-              onClick={() => onChange({ fontFamily: 'system' })}
-              className={`flex-1 py-1 text-sm rounded-md transition ${state.fontFamily === 'system' || !state.fontFamily ? 'bg-[#2D2D2D] text-white' : 'text-gray-400 hover:text-white'}`}
-            >
-              System
-            </button>
-            <button
-              onClick={() => onChange({ fontFamily: 'roboto' })}
-              className={`flex-1 py-1 text-sm rounded-md transition ${state.fontFamily === 'roboto' ? 'bg-[#2D2D2D] text-white' : 'text-gray-400 hover:text-white'}`}
-            >
-              Roboto (Android)
-            </button>
-            <button
-              onClick={() => onChange({ fontFamily: 'san-francisco' })}
-              className={`flex-1 py-1 text-sm rounded-md transition ${state.fontFamily === 'san-francisco' ? 'bg-[#2D2D2D] text-white' : 'text-gray-400 hover:text-white'}`}
-            >
-              San Francisco (iOS)
-            </button>
-          </div>
+          <select 
+            value={state.fontFamily || 'roboto'}
+            onChange={(e) => onChange({ fontFamily: e.target.value as any })}
+            className="w-full bg-[#0A0A0A] border border-[#2D2D2D] rounded-lg p-2 text-sm text-gray-300 focus:outline-none focus:border-blue-500 appearance-none"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239CA3AF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'right 0.5rem center',
+              backgroundSize: '1.2em 1.2em',
+              paddingRight: '2rem'
+            }}
+          >
+            <option value="roboto">Roboto (Android)</option>
+            <option value="san-francisco">San Francisco (iOS)</option>
+          </select>
         </div>
 
         <div>

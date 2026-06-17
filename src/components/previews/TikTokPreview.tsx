@@ -21,7 +21,7 @@ export function TikTokPreview({ state, onThemeToggle }: Props) {
 
   return (
     <>
-      <div className={`relative flex items-start p-4 ${bgColor} ${isReply ? 'rounded-2xl max-w-sm mt-3 ml-3 shadow-2xl' : 'w-full'}`}>
+      <div className={`relative flex items-start p-4 ${bgColor} ${isReply ? 'w-full rounded-xl drop-shadow-xl mt-4' : 'w-full'}`}>
         
         {/* Reply Pointer (if reply bubble) */}
         {isReply && (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CommentState } from './types';
 
-const usernames = ['Reza Gaming', 'Siti Beauty', 'Budi Santoso', 'Lestari', 'Andi Tech', 'Ayu Foodie'];
+export const usernames = ['Reza Gaming', 'Siti Beauty', 'Budi Santoso', 'Lestari', 'Andi Tech', 'Ayu Foodie'];
 const comments = [
   'Wah, kontennya bermanfaat banget kak!',
   'Info loker bang? 🙏',

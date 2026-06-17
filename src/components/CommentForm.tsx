@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { CommentState, AdditionalComment } from '../types';
 import { Image, Shuffle, Highlighter, EyeOff, Scissors, RotateCcw, Plus, Trash2 } from 'lucide-react';
-import { getRandomState } from '../utils';
+import { getRandomState, usernames } from '../utils';
 
 interface Props {
   state: CommentState;
@@ -356,10 +356,13 @@ export function CommentForm({ state, onChange, onRandomize }: Props) {
                        <div className="w-8 h-8 rounded-full border border-dashed border-[#2D2D2D] bg-[#141414]"></div>
                      )}
                      <button 
-                       onClick={() => updateAdditionalComment(comment.id, { avatarUrl: `https://api.dicebear.com/8.x/notionists/svg?seed=${Math.random()}` })}
+                       onClick={() => updateAdditionalComment(comment.id, { 
+                         avatarUrl: `https://api.dicebear.com/8.x/notionists/svg?seed=${Math.random()}`,
+                         username: usernames[Math.floor(Math.random() * usernames.length)]
+                       })}
                        className="text-[10px] bg-[#141414] hover:bg-[#2D2D2D] border border-[#2D2D2D] px-2 py-1 rounded text-gray-300 transition"
                      >
-                       <Shuffle className="w-3 h-3 inline mr-1" /> Acak Avatar
+                       <Shuffle className="w-3 h-3 inline mr-1" /> Acak Profil
                      </button>
                      <button 
                        onClick={() => updateAdditionalComment(comment.id, { avatarUrl: '' })}

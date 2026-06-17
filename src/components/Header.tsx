@@ -23,7 +23,7 @@ export function Header({ platform, onPlatformChange }: Props) {
            <div className="w-4 h-4 border-2 border-white rounded-sm"></div>
         </div>
         <div>
-           <h1 className="text-lg font-bold tracking-tight text-[#F9FAFB] hidden sm:block">Depok komen muluuu!</h1>
+           <h1 className="text-lg font-bold tracking-tight text-[#F9FAFB] hidden sm:block">depokkomen</h1>
         </div>
       </div>
       

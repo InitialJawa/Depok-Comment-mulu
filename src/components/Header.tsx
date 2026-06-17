@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform } from '../types';
 import { TikTokColoredIcon, InstagramColoredIcon, YouTubeColoredIcon, TwitterColoredIcon, KickColoredIcon } from './icons';
+import { Star, Gamepad2, MessageSquare } from 'lucide-react';
 
 interface Props {
   platform: Platform;

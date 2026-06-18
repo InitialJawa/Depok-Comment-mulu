@@ -51,7 +51,7 @@ export const defaultState: CommentState = {
   platform: 'tiktok',
   tiktokTemplate: 'video',
   instagramTemplate: 'comment',
-  theme: 'light',
+  theme: 'dark',
   username: 'Nisa Fitriani',
   handle: '@nisa_fitri',
   avatarUrl: 'https://avatars.githubusercontent.com/u/116664738?v=4',

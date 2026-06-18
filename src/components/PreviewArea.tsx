@@ -74,9 +74,9 @@ export function PreviewArea({ state, onStateChange }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#141414] border border-[#2D2D2D] rounded-2xl overflow-hidden flex-1 relative">
-      <div className="p-4 border-b border-[#2D2D2D] flex items-center justify-between shrink-0">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500">Live Preview ({state.platform})</h2>
+    <div className="flex flex-col h-full bg-[var(--panel-bg)] border border-[var(--panel-border)] rounded-[20px] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex-1 relative">
+      <div className="p-4 border-b border-[var(--panel-border)] flex items-center justify-between shrink-0">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Live Preview ({state.platform})</h2>
         <div className="flex gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
@@ -85,13 +85,13 @@ export function PreviewArea({ state, onStateChange }: Props) {
       </div>
       
       <div className="flex-1 flex items-center justify-center p-8 relative overflow-auto custom-scrollbar" style={{
-        backgroundImage: 'radial-gradient(#222 20%, transparent 20%), radial-gradient(#222 20%, transparent 20%)',
+        backgroundImage: 'radial-gradient(var(--panel-border) 20%, transparent 20%), radial-gradient(var(--panel-border) 20%, transparent 20%)',
         backgroundPosition: '0 0, 10px 10px',
         backgroundSize: '20px 20px',
-        backgroundColor: '#0c0c0c'
+        backgroundColor: 'var(--root-bg)'
       }}>
          <div className="absolute inset-0 z-0" style={{
-           backgroundImage: 'linear-gradient(45deg, #1f1f1f 25%, transparent 25%), linear-gradient(-45deg, #1f1f1f 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1f1f1f 75%), linear-gradient(-45deg, transparent 75%, #1f1f1f 75%)',
+           backgroundImage: 'linear-gradient(45deg, var(--panel-border) 25%, transparent 25%), linear-gradient(-45deg, var(--panel-border) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--panel-border) 75%), linear-gradient(-45deg, transparent 75%, var(--panel-border) 75%)',
            backgroundSize: '20px 20px',
            backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
          }}></div>
@@ -99,7 +99,7 @@ export function PreviewArea({ state, onStateChange }: Props) {
          <div className="relative z-10 flex justify-center drop-shadow-xl" style={getFontFamilyStyle()}>
            <div 
               ref={previewRef} 
-              className="flex justify-center rounded-xl overflow-hidden shadow-2xl"
+              className="flex justify-center rounded-[14px] overflow-hidden shadow-2xl"
               style={{ backgroundColor: 'transparent' }}
            >
               {getPreviewComponent()}
@@ -107,19 +107,19 @@ export function PreviewArea({ state, onStateChange }: Props) {
          </div>
       </div>
       
-      <div className="p-4 border-t border-[#2D2D2D] bg-[#0A0A0A] shrink-0">
+      <div className="p-4 border-t border-[var(--panel-border)] bg-[var(--root-bg)] shrink-0">
         <div className="flex items-center justify-between mb-4 px-2">
-           <span className="text-xs text-gray-400">Tema Komentar</span>
-           <div className="flex bg-[#141414] border border-[#2D2D2D] rounded-lg p-1">
+           <span className="text-xs text-[var(--text-muted)]">Tema Komentar</span>
+           <div className="flex bg-[var(--panel-bg)] border border-[var(--panel-border)] rounded-lg p-1">
              <button
                onClick={() => onStateChange({ theme: 'light' })}
-               className={`px-3 py-1.5 text-[10px] uppercase font-bold rounded-md transition flex items-center gap-1.5 ${state.theme === 'light' ? 'bg-[#2D2D2D] text-white' : 'text-gray-500 hover:text-white'}`}
+               className={`px-3 py-1.5 text-[10px] uppercase font-bold rounded-md transition flex items-center gap-1.5 ${state.theme === 'light' ? 'bg-[var(--panel-bg)] shadow-[0_1px_3px_rgba(0,0,0,0.1)] text-[var(--root-fg)]' : 'text-[var(--text-muted)] hover:text-[var(--root-fg)]'}`}
              >
                <Sun className="w-3 h-3" /> Light
              </button>
              <button
                onClick={() => onStateChange({ theme: 'dark' })}
-               className={`px-3 py-1.5 text-[10px] uppercase font-bold rounded-md transition flex items-center gap-1.5 ${state.theme === 'dark' ? 'bg-[#2D2D2D] text-white' : 'text-gray-500 hover:text-white'}`}
+               className={`px-3 py-1.5 text-[10px] uppercase font-bold rounded-md transition flex items-center gap-1.5 ${state.theme === 'dark' ? 'bg-[var(--panel-bg)] shadow-[0_1px_3px_rgba(0,0,0,0.1)] text-[var(--root-fg)]' : 'text-[var(--text-muted)] hover:text-[var(--root-fg)]'}`}
              >
                <Moon className="w-3 h-3" /> Dark
              </button>
@@ -128,7 +128,7 @@ export function PreviewArea({ state, onStateChange }: Props) {
         <button 
           onClick={handleExport}
           disabled={isExporting}
-          className="w-full bg-[#22C55E] hover:bg-[#1eb054] text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+          className="w-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-3 rounded-[14px] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
         >
           {isExporting ? (
             <Loader2 className="w-5 h-5 mr-2 animate-spin" />

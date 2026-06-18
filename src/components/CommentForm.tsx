@@ -1,15 +1,16 @@
 import React, { useRef } from 'react';
 import { CommentState, AdditionalComment } from '../types';
-import { Image, Shuffle, Highlighter, EyeOff, Scissors, RotateCcw, Plus, Trash2 } from 'lucide-react';
+import { Image, Shuffle, Highlighter, EyeOff, Scissors, RotateCcw, Plus, Trash2, Zap } from 'lucide-react';
 import { getRandomState, maleUsernames, femaleUsernames, getRandomAvatarUrl } from '../utils';
 
 interface Props {
   state: CommentState;
   onChange: (state: Partial<CommentState>) => void;
   onRandomize: () => void;
+  onReset?: () => void;
 }
 
-export function CommentForm({ state, onChange, onRandomize }: Props) {
+export function CommentForm({ state, onChange, onRandomize, onReset }: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleAvatarUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -107,13 +108,25 @@ export function CommentForm({ state, onChange, onRandomize }: Props) {
     <div className="bg-[var(--panel-bg)] border border-[var(--panel-border)] shadow-sm rounded-2xl p-5 flex flex-col gap-5 flex-1">
       <div className="flex items-center justify-between pb-4 border-b border-[var(--panel-border)]">
         <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Konfigurasi Komentar</h2>
-        <button 
-          onClick={onRandomize}
-          className="flex items-center text-[10px] bg-[var(--panel-bg)] border border-[var(--panel-border)] shadow-sm hover:bg-[var(--root-bg)] text-[var(--root-fg)] font-semibold px-2.5 py-1 rounded-md transition"
-        >
-          <Shuffle className="w-3 h-3 mr-1" />
-          RANDOMIZE
-        </button>
+        <div className="flex items-center gap-2">
+          {onReset && (
+            <button 
+              onClick={onReset}
+              className="flex items-center text-[10px] bg-[var(--panel-bg)] border border-[var(--panel-border)] shadow-sm hover:bg-[var(--root-bg)] text-[var(--text-muted)] hover:text-[#FE2B54] font-semibold px-2.5 py-1 rounded-md transition"
+              title="Reset ke Default"
+            >
+              <RotateCcw className="w-3 h-3 mr-1" />
+              RESET
+            </button>
+          )}
+          <button 
+            onClick={onRandomize}
+            className="flex items-center text-[10px] bg-[var(--panel-bg)] border border-[var(--panel-border)] shadow-sm hover:bg-[var(--root-bg)] text-[var(--root-fg)] font-semibold px-2.5 py-1 rounded-md transition"
+          >
+            <Shuffle className="w-3 h-3 mr-1" />
+            RANDOMIZE
+          </button>
+        </div>
       </div>
 
       {state.platform === 'tiktok' && (
@@ -187,7 +200,37 @@ export function CommentForm({ state, onChange, onRandomize }: Props) {
                 onChange={e => onChange({ fontSize: parseInt(e.target.value) })}
                 className="w-full accent-blue-500"
               />
-              <span className="text-xs text-[var(--text-muted)] font-medium w-8">{state.fontSize || 15}px</span>
+              <span className="text-xs text-[var(--text-muted)] font-medium w-6">{state.fontSize || 15}px</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex gap-4">
+          <div className="flex-1">
+            <label className="block text-[10px] font-bold text-[var(--text-muted)] uppercase mb-1.5">Spasi (Padding)</label>
+            <div className="flex items-center gap-2 h-[38px]">
+              <input 
+                type="range" 
+                min="8" max="32" step="1"
+                value={state.padding ?? 16}
+                onChange={e => onChange({ padding: parseInt(e.target.value) })}
+                className="w-full accent-blue-500"
+              />
+              <span className="text-xs text-[var(--text-muted)] font-medium w-6">{state.padding ?? 16}px</span>
+            </div>
+          </div>
+
+          <div className="flex-1">
+            <label className="block text-[10px] font-bold text-[var(--text-muted)] uppercase mb-1.5">Lengkungan (Radius)</label>
+            <div className="flex items-center gap-2 h-[38px]">
+              <input 
+                type="range" 
+                min="0" max="48" step="1"
+                value={state.borderRadius ?? 12}
+                onChange={e => onChange({ borderRadius: parseInt(e.target.value) })}
+                className="w-full accent-blue-500"
+              />
+              <span className="text-xs text-[var(--text-muted)] font-medium w-6">{state.borderRadius ?? 12}px</span>
             </div>
           </div>
         </div>
@@ -394,6 +437,29 @@ export function CommentForm({ state, onChange, onRandomize }: Props) {
               className="w-full bg-[var(--panel-bg)] border border-[var(--panel-border)] focus:border-blue-500 rounded-[10px] px-3 py-2 text-[var(--root-fg)] text-sm outline-none transition h-24 resize-none"
               placeholder="Tulis komentar di sini..."
            />
+           <div className="mt-2">
+             <div className="text-[10px] font-bold text-[var(--text-muted)] uppercase mb-1.5 flex items-center mt-3">
+               <Zap className="w-3 h-3 mr-1" /> Quick Presets
+             </div>
+             <div className="flex flex-wrap gap-1.5">
+               {[
+                 { label: "Spill", text: "Spill produknya dung kak 🙏" },
+                 { label: "Nitip Sendal", text: "Nitip sendal, kalo rame kabarin 🩴" },
+                 { label: "Suhu", text: "The real suhu emang beda 🥶" },
+                 { label: "Kawal FYP", text: "Kawal sampai tembus fyp 🔥🚀" },
+                 { label: "Relate", text: "Agak laen emang, tapi relate banget woy 😭😭" },
+                 { label: "Info Loker", text: "Info loker info maseehhh" }
+               ].map(preset => (
+                 <button
+                   key={preset.label}
+                   onClick={() => onChange({ commentText: preset.text, likeCount: Math.floor(Math.random() * 50) + 1 + 'K' })}
+                   className="text-[10px] bg-[var(--root-bg)] hover:bg-[var(--panel-bg)] shadow-[0_1px_3px_rgba(0,0,0,0.1)] border border-[var(--panel-border)] px-2 py-1.5 rounded-md text-[var(--root-fg)] font-medium transition"
+                 >
+                   {preset.label}
+                 </button>
+               ))}
+             </div>
+           </div>
         </div>
 
         <div className="pt-2">

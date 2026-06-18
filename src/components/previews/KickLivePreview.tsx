@@ -35,7 +35,7 @@ export function KickLivePreview({ state, onThemeToggle }: Props) {
   const borderClass = state.hideLiveBackground ? 'border-transparent' : (isDark ? 'border-[#1E232B]' : 'border-gray-200');
 
   const containerClasses = `w-full min-w-[320px] max-w-lg text-left flex flex-col ${bgClass} ${
-    !state.hideLiveBackground ? `rounded-lg border ${borderClass} overflow-hidden shadow-lg` : ''
+    !state.hideLiveBackground ? `border ${borderClass} overflow-hidden shadow-lg` : ''
   }`;
 
   const renderComment = (comment: any, isMain = false) => {
@@ -81,7 +81,13 @@ export function KickLivePreview({ state, onThemeToggle }: Props) {
   };
 
   return (
-    <div className={containerClasses}>
+    <div 
+      className={containerClasses} 
+      style={{ 
+        padding: state.hideLiveBackground ? '0' : `${state.padding ?? 16}px`,
+        borderRadius: state.hideLiveBackground ? '0' : `${state.borderRadius ?? 12}px`
+      }}
+    >
       {renderComment(state, true)}
       {(state.additionalComments || []).map((comment) => renderComment(comment))}
     </div>

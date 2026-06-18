@@ -27,6 +27,10 @@ export default function App() {
     setState(prev => getRandomState(prev));
   };
 
+  const handleReset = () => {
+    setState(defaultState);
+  };
+
   return (
     <div className="min-h-screen bg-[var(--root-bg)] text-[var(--root-fg)] font-sans selection:bg-[var(--accent)]/30 flex flex-col h-screen overflow-hidden">
       <Header 
@@ -51,6 +55,7 @@ export default function App() {
                state={state} 
                onChange={handleStateChange}
                onRandomize={handleRandomize}
+               onReset={handleReset}
              />
           </div>
           

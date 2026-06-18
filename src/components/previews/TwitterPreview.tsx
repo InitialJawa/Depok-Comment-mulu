@@ -18,7 +18,13 @@ export function TwitterPreview({ state, onThemeToggle }: Props) {
   const mutedColor = isDark ? 'text-[#71767B]' : 'text-[#536471]';
 
   return (
-    <div className={`w-fit max-w-lg sm:max-w-xl ${bgColor} p-4 text-left ${nameColor} border ${borderColor} flex flex-col`}>
+    <div 
+      className={`w-fit max-w-lg sm:max-w-xl ${bgColor} text-left ${nameColor} border ${borderColor} flex flex-col`}
+      style={{ 
+        padding: `${state.padding ?? 16}px`,
+        borderRadius: `${state.borderRadius ?? 12}px`
+      }}
+    >
       {state.isPinned && (
         <div className={`flex items-center text-[13px] font-bold mb-2 pl-9 ${mutedColor}`}>
           <svg className="w-3.5 h-3.5 mr-2" fill="currentColor" viewBox="0 0 24 24">

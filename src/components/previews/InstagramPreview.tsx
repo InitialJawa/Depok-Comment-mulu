@@ -15,7 +15,13 @@ export function InstagramPreview({ state, onThemeToggle }: Props) {
   const mutedColor = isDark ? 'text-[#A8A8A8]' : 'text-gray-500';
 
   return (
-    <div className={`w-fit max-w-lg sm:max-w-xl ${bgColor} p-4 text-left flex flex-col`}>
+    <div 
+      className={`w-fit max-w-lg sm:max-w-xl ${bgColor} text-left flex flex-col`}
+      style={{ 
+        padding: `${state.padding ?? 16}px`,
+        borderRadius: `${state.borderRadius ?? 12}px` 
+      }}
+    >
       {state.isPinned && (
         <div className={`flex items-center text-[12px] font-medium mb-2 pl-11 ${mutedColor}`}>
           <svg className="w-3.5 h-3.5 mr-1" fill="currentColor" viewBox="0 0 24 24">

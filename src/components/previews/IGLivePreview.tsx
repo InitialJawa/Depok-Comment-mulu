@@ -14,12 +14,17 @@ export function IGLivePreview({ state, onThemeToggle }: Props) {
   const textColor = isDark ? 'text-white' : 'text-black';
   const containerClasses = state.hideLiveBackground 
     ? "flex items-start max-w-sm w-fit drop-shadow-md" 
-    : `flex items-start ${bgColor} backdrop-blur-md rounded-2xl p-2.5 max-w-sm w-fit shadow-sm`;
+    : `flex items-start ${bgColor} backdrop-blur-md max-w-sm w-fit shadow-sm`;
+
+  const containerStyle = {
+    padding: state.hideLiveBackground ? '0' : `${state.padding ?? 10}px`,
+    borderRadius: state.hideLiveBackground ? '0' : `${state.borderRadius ?? 16}px`
+  };
 
   return (
     <div className="w-fit max-w-lg sm:max-w-xl flex justify-start text-left relative pt-10 pb-4 flex-col gap-1">
       {/* Container for main live comment styling */}
-      <div className={containerClasses}>
+      <div className={containerClasses} style={containerStyle}>
         {state.avatarUrl && (
           <img src={state.avatarUrl} alt="Avatar" className={`w-[34px] h-[34px] rounded-full object-cover mr-3 bg-gray-800 shrink-0 ${state.hideLiveBackground ? '' : (isDark ? 'border border-white/10' : 'border border-gray-200')}`} />
         )}

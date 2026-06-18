@@ -46,6 +46,8 @@ export interface CommentState {
   hideLiveBackground: boolean;
   fontFamily: 'roboto' | 'san-francisco';
   hasDropShadow: boolean;
+  padding: number;
+  borderRadius: number;
 }
 
 export const defaultState: CommentState = {
@@ -72,4 +74,6 @@ export const defaultState: CommentState = {
   hideLiveBackground: false,
   fontFamily: 'san-francisco',
   hasDropShadow: true,
+  padding: 16,
+  borderRadius: 12,
 };
